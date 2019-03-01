@@ -6,29 +6,29 @@
     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
     <bean id="actor1" class="com.stackroute.domain.Actor">
-        <property name="name" value="Abhinav" />
-        <property name="gender" value="male" />
-        <property name="age" value="20" />
+        <constructor-arg index="0" value="Abhinav"> </constructor-arg>
+        <constructor-arg index="1" value="male"> </constructor-arg>
+        <constructor-arg index="2" value="20"></constructor-arg>
 
     </bean>
 
     <bean id="actor2" class="com.stackroute.domain.Actor">
-        <property name="name" value="Farhaan" />
-        <property name="gender" value="male" />
-        <property name="age" value="22" />
+        <constructor-arg index="0" value="farhaaan"> </constructor-arg>
+        <constructor-arg index="1" value="male"> </constructor-arg>
+        <constructor-arg index="2" value="23"></constructor-arg>
 
     </bean>
 
 
-    <bean id="movie1" class="com.stackroute.domain.Movie">
-        <property name="actor" ref="actor1" />
+    <bean name="movie1,movieB" class="com.stackroute.domain.Movie" scope="singleton" >
+        <constructor-arg index="0" ref="actor1" ></constructor-arg>
 
 
     </bean>
 
 
-    <bean id="movie2" class="com.stackroute.domain.Movie">
-        <property name="actor" ref="actor2" />
+    <bean id="movie2" class="com.stackroute.domain.Movie"  scope="prototype">
+        <constructor-arg index="0" ref="actor2" ></constructor-arg>
 
 
     </bean>
