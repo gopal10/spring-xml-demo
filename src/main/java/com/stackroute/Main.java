@@ -27,27 +27,21 @@ public class Main {
 
     public  static  void main(String gopal []) {
 
-        XmlBeanFactory xmlBeanFactory= new XmlBeanFactory ( new ClassPathResource("BeanFile.xml"));
-        Movie movieFirst= (Movie)xmlBeanFactory.getBean("movie1");
-        Movie moviesecond=(Movie)xmlBeanFactory.getBean("movie1");
-
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("BeanFile.xml");
          Movie movie=(Movie)applicationContext.getBean("movie2");
-        Movie movie2=(Movie)applicationContext.getBean("movie2");
-
-        Movie movieB=(Movie)applicationContext.getBean("movieB");
-
-
-        System.out.println(movieFirst.getActor());
+        Movie movie2=(Movie)applicationContext.getBean("movie3");
 
         System.out.println(movie.getActor());
-
-        System.out.println(movie==movie2);
-
-        System.out.println(movieFirst==moviesecond);
-
-        System.out.println(movieB.getActor());
-       // BeanDefinitionRegistry beanDefinitionRegistry= new BeanDefinitionReader("BeanFile.xml");
-
+        System.out.println(movie2.getActor());
     }
 }
+/*
+Exception in thread "main" org.springframework.beans.factory.BeanCreationException:
+ Error creating bean with name 'movie2' defined in class path resource [BeanFile.xml]:
+  Instantiation of bean failed; nested exception is org.springframework.beans.
+  BeanInstantiationException: Failed to instantiate [com.stackroute.domain.Movie]:
+  No default constructor found; nested exception is java.lang.NoSuchMethodException:
+  com.stackroute.domain.Movie.<init>()
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.
+	instantiateBean(AbstractAutowireCapableBeanFactory.java:1287)
+ */
