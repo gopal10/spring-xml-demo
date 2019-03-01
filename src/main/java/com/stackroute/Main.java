@@ -31,8 +31,15 @@ public class Main {
          Movie movie=(Movie)applicationContext.getBean("movie2");
         Movie movie2=(Movie)applicationContext.getBean("movie3");
 
+        XmlBeanFactory xmlBeanFactory= new XmlBeanFactory ( new ClassPathResource("BeanFile.xml"));
+        Movie movieFirst= (Movie)xmlBeanFactory.getBean("movie2");
+
         System.out.println(movie.getActor());
         System.out.println(movie2.getActor());
+
+        movie.setApplicationContext(applicationContext);
+        movieFirst.setBeanFactory(xmlBeanFactory);
+        movie.setBeanName("beam123");
     }
 }
 /*

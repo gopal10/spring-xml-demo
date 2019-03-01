@@ -22,10 +22,10 @@
 
 
 
-    <bean id="movie2" autowire="byName" class="com.stackroute.domain.Movie" >
+    <bean id="movie2" autowire="constructor" class="com.stackroute.domain.Movie" >
 
     </bean>
-    <bean id="movie3" autowire="byName" class="com.stackroute.domain.Movie" >
+    <bean id="movie3" autowire="constructor" class="com.stackroute.domain.Movie" >
 
     </bean>
 
