@@ -16,39 +16,17 @@ The Main class looks up Movie bean via three ways to print out actor information
 Create a spring-xml-demo repo and push the code to master branch.
 
  */
-import com.stackroute.domain.Movie;
 
-import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.core.io.ClassPathResource;
+
 
 public class Main {
 
     public  static  void main(String gopal []) {
 
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("BeanFile.xml");
-         Movie movie=(Movie)applicationContext.getBean("movie2");
-        Movie movie2=(Movie)applicationContext.getBean("movie3");
-
-        XmlBeanFactory xmlBeanFactory= new XmlBeanFactory ( new ClassPathResource("BeanFile.xml"));
-        Movie movieFirst= (Movie)xmlBeanFactory.getBean("movie2");
-
-        System.out.println(movie.getActor());
-        System.out.println(movie2.getActor());
-
-        movie.setApplicationContext(applicationContext);
-        movieFirst.setBeanFactory(xmlBeanFactory);
-        movie.setBeanName("beam123");
+        ((ClassPathXmlApplicationContext) applicationContext).registerShutdownHook();
+         BeanLifeCycleDemo beanLifeCycleDemo=(BeanLifeCycleDemo) applicationContext.getBean("cycle");
     }
 }
-/*
-Exception in thread "main" org.springframework.beans.factory.BeanCreationException:
- Error creating bean with name 'movie2' defined in class path resource [BeanFile.xml]:
-  Instantiation of bean failed; nested exception is org.springframework.beans.
-  BeanInstantiationException: Failed to instantiate [com.stackroute.domain.Movie]:
-  No default constructor found; nested exception is java.lang.NoSuchMethodException:
-  com.stackroute.domain.Movie.<init>()
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.
-	instantiateBean(AbstractAutowireCapableBeanFactory.java:1287)
- */
